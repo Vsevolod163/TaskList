@@ -24,7 +24,7 @@ final class TaskListViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-           delete(indexPath)
+            delete(from: indexPath)
         }
     }
     
@@ -88,7 +88,7 @@ final class TaskListViewController: UITableViewController {
         }
     }
     
-    private func delete(_ indexPath: IndexPath) {
+    private func delete(from indexPath: IndexPath) {
         let task = taskList[indexPath.row]
         
         viewContext.delete(task)
