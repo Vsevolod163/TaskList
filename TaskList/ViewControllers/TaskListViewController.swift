@@ -12,13 +12,20 @@ final class TaskListViewController: UITableViewController {
     private let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let cellID = "cell"
     private var taskList: [Task] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         view.backgroundColor = .white
         setupNavigationBar()
         fetchData()
+    }
+    
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+           delete(indexPath)
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -67,6 +74,10 @@ final class TaskListViewController: UITableViewController {
     private func save(_ taskName: String) {
         let task = Task(context: viewContext)
         task.title = taskName
+        taskList.append(task)
+
+        let indexPath = IndexPath(row: taskList.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
         
         if viewContext.hasChanges {
             do {
@@ -75,8 +86,22 @@ final class TaskListViewController: UITableViewController {
                 print(error.localizedDescription)
             }
         }
-        dismiss(animated: true)
     }
+    
+    private func delete(_ indexPath: IndexPath) {
+        let task = taskList[indexPath.row]
+        
+        viewContext.delete(task)
+        
+        do {
+            try viewContext.save()
+            taskList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
 }
     
 // MARK: - SetupUI
