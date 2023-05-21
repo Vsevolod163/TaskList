@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 /// Protocol that defines an interface for creating buttons.
 protocol ButtonFactory {
@@ -60,6 +61,10 @@ final class FilledButtonFactory: ButtonFactory {
 }
 
 final class TaskViewController: UIViewController {
+    weak var delegate: NewTaskViewControllerDelegate!
+    
+    private let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     private lazy var taskTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
@@ -124,6 +129,18 @@ final class TaskViewController: UIViewController {
     }
     
     private func save() {
+        let task = Task(context: viewContext)
+        task.title = taskTextField.text
+        
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        delegate.reloadData()
         dismiss(animated: true)
     }
 }
