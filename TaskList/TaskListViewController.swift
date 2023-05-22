@@ -78,7 +78,6 @@ private extension TaskListViewController {
             action: #selector(addNewTask)
         )
         navigationController?.navigationBar.tintColor = .white
-        
     }
 }
 
