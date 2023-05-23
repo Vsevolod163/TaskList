@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C617A0C02A1D090600D168C0 /* AlertControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C617A0BF2A1D090600D168C0 /* AlertControllerFactory.swift */; };
 		C663141D2A1940CD00A9889E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C663141C2A1940CD00A9889E /* AppDelegate.swift */; };
 		C663141F2A1940CD00A9889E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C663141E2A1940CD00A9889E /* SceneDelegate.swift */; };
 		C66314212A1940CD00A9889E /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66314202A1940CD00A9889E /* TaskListViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C617A0BF2A1D090600D168C0 /* AlertControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControllerFactory.swift; sourceTree = "<group>"; };
 		C66314192A1940CD00A9889E /* TaskList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C663141C2A1940CD00A9889E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C663141E2A1940CD00A9889E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C617A0BD2A1D08CD00D168C0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C66314252A1940CD00A9889E /* TaskList.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C617A0BE2A1D08D300D168C0 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				C617A0BF2A1D090600D168C0 /* AlertControllerFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		C66314102A1940CD00A9889E = {
 			isa = PBXGroup;
 			children = (
@@ -58,12 +76,13 @@
 		C663141B2A1940CD00A9889E /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				C617A0BD2A1D08CD00D168C0 /* Models */,
 				C6B87B772A1A8D4A00150DCB /* ViewControllers */,
 				C6B87B752A1A8D3C00150DCB /* Storyboards */,
+				C617A0BE2A1D08D300D168C0 /* Factories */,
 				C6B87B762A1A8D4300150DCB /* Services */,
 				C6B87B732A1A8D2300150DCB /* App */,
 				C6B87B742A1A8D2C00150DCB /* Sources */,
-				C66314252A1940CD00A9889E /* TaskList.xcdatamodeld */,
 			);
 			path = TaskList;
 			sourceTree = "<group>";
@@ -183,6 +202,7 @@
 				C66314272A1940CD00A9889E /* TaskList.xcdatamodeld in Sources */,
 				C66314212A1940CD00A9889E /* TaskListViewController.swift in Sources */,
 				C6B87B722A1A8D1300150DCB /* StorageManager.swift in Sources */,
+				C617A0C02A1D090600D168C0 /* AlertControllerFactory.swift in Sources */,
 				C663141D2A1940CD00A9889E /* AppDelegate.swift in Sources */,
 				C663141F2A1940CD00A9889E /* SceneDelegate.swift in Sources */,
 			);
